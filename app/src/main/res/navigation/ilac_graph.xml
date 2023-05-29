@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/ilac_graph"
+    app:startDestination="@id/secimFragment">
+
+    <fragment
+        android:id="@+id/secimFragment"
+        android:name="com.eneserkocak.ilac.view.SecimFragment"
+        android:label="SecimFragment" >
+        <action
+            android:id="@+id/action_secimFragment_to_ilacListesiFragment"
+            app:destination="@id/ilacListesiFragment" />
+        <action
+            android:id="@+id/action_secimFragment_to_tumIlaclarFragment"
+            app:destination="@id/tumIlaclarFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/ilacListesiFragment"
+        android:name="com.eneserkocak.ilac.view.IlacListesiFragment"
+        android:label="IlacListesiFragment" >
+        <action
+            android:id="@+id/action_ilacListesiFragment_to_secimFragment"
+            app:destination="@id/secimFragment" />
+        <action
+            android:id="@+id/action_ilacListesiFragment_to_ilacDetayiFragment"
+            app:destination="@id/ilacDetayiFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/ilacDetayiFragment"
+        android:name="com.eneserkocak.ilac.view.IlacDetayiFragment"
+        android:label="IlacDetayiFragment" >
+        <action
+            android:id="@+id/action_ilacDetayiFragment_to_ilacListesiFragment"
+            app:destination="@id/ilacListesiFragment" />
+        <argument
+            android:name="ilacId"
+            app:argType="integer"
+            android:defaultValue="0" />
+    </fragment>
+    <fragment
+        android:id="@+id/tumIlaclarFragment"
+        android:name="com.eneserkocak.ilac.view2.TumIlaclarFragment"
+        android:label="fragment_tum_ilaclar"
+        tools:layout="@layout/fragment_tum_ilaclar" >
+        <action
+            android:id="@+id/action_tumIlaclarFragment_to_secimFragment"
+            app:destination="@id/secimFragment" />
+        <action
+            android:id="@+id/action_tumIlaclarFragment_to_miadiGecenlerFragment"
+            app:destination="@id/miadiGecenlerFragment" />
+        <action
+            android:id="@+id/action_tumIlaclarFragment_to_miadiYaklasanlarFragment"
+            app:destination="@id/miadiYaklasanlarFragment" />
+        <action
+            android:id="@+id/action_tumIlaclarFragment_to_yeniIlacEkleFragment"
+            app:destination="@id/yeniIlacEkleFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/miadiYaklasanlarFragment"
+        android:name="com.eneserkocak.ilac.view2.miadiYaklasanlarFragment"
+        android:label="miadiYaklasanlarFragment" >
+        <action
+            android:id="@+id/action_miadiYaklasanlarFragment_to_tumIlaclarFragment"
+            app:destination="@id/tumIlaclarFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/miadiGecenlerFragment"
+        android:name="com.eneserkocak.ilac.view2.miadiGecenlerFragment"
+        android:label="miadiGecenlerFragment" >
+        <action
+            android:id="@+id/action_miadiGecenlerFragment_to_tumIlaclarFragment"
+            app:destination="@id/tumIlaclarFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/yeniIlacEkleFragment"
+        android:name="com.eneserkocak.ilac.view2.yeniIlacEkleFragment"
+        android:label="fragment_yeni_ilac_ekle"
+        tools:layout="@layout/fragment_yeni_ilac_ekle" >
+        <action
+            android:id="@+id/action_yeniIlacEkleFragment_to_tumIlaclarFragment"
+            app:destination="@id/tumIlaclarFragment" />
+        <action
+            android:id="@+id/action_yeniIlacEkleFragment_to_qrCodeFragment"
+            app:destination="@id/qrCodeFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/qrCodeFragment"
+        android:name="com.eneserkocak.ilac.view2.qrCodeFragment"
+        android:label="qrCodeFragment" >
+        <action
+            android:id="@+id/action_qrCodeFragment_to_yeniIlacEkleFragment"
+            app:destination="@id/yeniIlacEkleFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/ayarlarFragment"
+        android:name="com.eneserkocak.ilac.view.AyarlarFragment"
+        android:label="AyarlarFragment" />
+</navigation>

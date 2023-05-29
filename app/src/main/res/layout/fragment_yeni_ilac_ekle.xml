@@ -1,0 +1,148 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="viewModel"
+            type="com.eneserkocak.ilac.viewmodel.IlacViewModel" />
+
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:background="@drawable/backaca"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context=".view2.yeniIlacEkleFragment">
+
+
+        <Button
+            android:id="@+id/qrCodeButton"
+            android:layout_width="218dp"
+            android:layout_height="68dp"
+            android:layout_marginTop="42dp"
+            android:layout_weight="1"
+            android:src="@drawable/qrcode"
+            android:text="QR Code"
+
+
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <EditText
+            android:id="@+id/barkodNumarasiText"
+            android:layout_width="299dp"
+            android:layout_height="56dp"
+            android:layout_marginTop="30dp"
+            android:ems="10"
+            android:hint="Barkod Numarası"
+            android:inputType="textPersonName"
+            android:text="@{viewModel.secilenIlac.ilacBarkod}"
+
+            android:lines="1"
+            android:maxLength="35"
+            android:background="@drawable/barkodnumarasitext_backround"
+            android:textColorHint="@color/black"
+            android:drawableLeft="@drawable/ic_baseline_qr_code_2_24"
+
+
+            android:textAlignment="center"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/qrCodeButton"
+            tools:ignore="TouchTargetSizeCheck" />
+
+        <EditText
+            android:id="@+id/ilacinAdiText"
+            android:layout_width="297dp"
+            android:layout_height="53dp"
+            android:layout_marginTop="20dp"
+            android:background="@drawable/barkodnumarasitext_backround"
+            android:drawableLeft="@drawable/ic_baseline_emergency_24"
+            android:ems="10"
+            android:hint="İlacın Adı"
+            android:inputType="textPersonName"
+            android:lines="1"
+            android:maxLength="35"
+            android:text="@{viewModel.secilenIlac.ilacAdi}"
+
+            android:textAlignment="center"
+            android:textColorHint="@color/black"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/barkodNumarasiText"
+
+
+            tools:ignore="TouchTargetSizeCheck" />
+
+        <EditText
+            android:id="@+id/ilacinFaydalariText"
+            android:layout_width="295dp"
+            android:layout_height="51dp"
+            android:layout_marginTop="20dp"
+            android:background="@drawable/barkodnumarasitext_backround"
+            android:drawableLeft="@drawable/ic_baseline_insights_24"
+            android:ems="10"
+            android:hint="İlacın Faydaları"
+            android:inputType="textPersonName"
+            android:lines="1"
+            android:maxLength="35"
+            android:text="@{viewModel.secilenIlac.ilacEndikasyon}"
+
+            android:textAlignment="center"
+            android:textColorHint="@color/black"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/ilacinAdiText"
+            tools:ignore="TouchTargetSizeCheck" />
+
+        <EditText
+            android:id="@+id/editTextDate"
+            android:layout_width="293dp"
+            android:layout_height="54dp"
+            android:layout_marginTop="20dp"
+            android:background="@drawable/barkodnumarasitext_backround"
+            android:drawableLeft="@drawable/ic_baseline_calendar_month_24"
+            android:ems="10"
+            android:hint="Son Kullanım Tarihi"
+            android:inputType="date"
+            android:lines="1"
+            android:maxLength="35"
+           dateToString="@{viewModel.secilenIlac.skt}"
+
+            android:textAlignment="center"
+            android:textColorHint="@color/black"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/ilacinFaydalariText"
+
+
+            tools:ignore="TouchTargetSizeCheck" />
+
+        <Button
+            android:id="@+id/kaydet"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="2dp"
+            android:background="@drawable/barkodnumarasitext_backround"
+
+            android:lines="1"
+
+            android:onClick="kaydet"
+            android:text="Kaydet"
+
+
+            android:textColor="@color/black"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.498"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/editTextDate"
+            app:layout_constraintVertical_bias="0.294" />
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>
