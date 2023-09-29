@@ -1,29 +1,28 @@
 package com.eneserkocak.ilac.view
 
-import android.os.Binder
 import android.os.Bundle
-import androidx.fragment.app.Fragment
-import android.view.LayoutInflater
 import android.view.View
-import android.view.ViewGroup
 import android.widget.SearchView
 import androidx.lifecycle.Observer
-import androidx.lifecycle.ViewModel
-import androidx.navigation.Navigation
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.eneserkocak.ilac.R
 import com.eneserkocak.ilac.adapter.IlacRecyclerAdapter
 import com.eneserkocak.ilac.databinding.FragmentIlacListesiBinding
 import com.eneserkocak.ilac.model.Ilac
+import com.google.android.gms.ads.AdRequest
+import com.google.android.gms.ads.AdView
+import com.google.android.gms.ads.MobileAds
 import java.util.*
-import kotlin.collections.ArrayList
 
 
 class IlacListesiFragment : BaseFragment<FragmentIlacListesiBinding>(R.layout.fragment_ilac_listesi) {
 
+    lateinit var mAdView : AdView
+
     private lateinit var searchView: SearchView
     var searchList = mutableListOf<Ilac>()
+
     var ilacListesi= mutableListOf<Ilac>()
 
     val adapter = IlacRecyclerAdapter(){
@@ -36,9 +35,21 @@ class IlacListesiFragment : BaseFragment<FragmentIlacListesiBinding>(R.layout.fr
                 super.onViewCreated(view, savedInstanceState)
 
 
+        //BANNER ADMOB KODLARI
+        MobileAds.initialize(requireContext()) {}
+        //Banner Ad ID -> ca-app-pub-5511459156486174/2341916943   PLAY STORE YAYINLARKEN XML de BUNA ÇEVİR
+        //Banner Test ID -> ca-app-pub-3940256099942544/6300978111
+        mAdView = view.findViewById(R.id.adView)
+        val adRequest = AdRequest.Builder().build()
+        mAdView.loadAd(adRequest)
 
 
         searchView = binding.search
+        //search içinde herhangi bir yere tıklayınca search çalışacak:
+        searchView.setOnClickListener {
+            searchView.isIconified = false
+        }
+
         binding.ilacListRecycler.layoutManager=LinearLayoutManager(requireContext())
         binding.ilacListRecycler.adapter= adapter
 
@@ -77,31 +88,7 @@ class IlacListesiFragment : BaseFragment<FragmentIlacListesiBinding>(R.layout.fr
             }
         })
 
-        /*viewModel.ilacHataMesaji.observe(viewLifecycleOwner, Observer { hata->
-            hata?.let {
-                if(it){
-                    binding.ilacHataMesaji.visibility=View.VISIBLE
-                    binding.ilacListRecycler.visibility=View.GONE
-                }else{
-                    binding.ilacHataMesaji.visibility=View.GONE
-                }
-            }
-        })*/
 
-       /* viewModel.ilacYukleniyor.observe(viewLifecycleOwner, Observer { ilacYukleniyor->
-            ilacYukleniyor?.let {
-                if (it){
-                    binding.ilacListRecycler.visibility=View.GONE
-                    binding.ilacHataMesaji.visibility=View.GONE
-                    binding.search.visibility=View.GONE
-                    binding.ilacYukleniyor.visibility=View.VISIBLE
-
-                }else{
-                    binding.ilacYukleniyor.visibility=View.GONE
-                    binding.search.visibility=View.VISIBLE
-                }
-            }
-        })*/
     }
 
 
@@ -111,6 +98,7 @@ class IlacListesiFragment : BaseFragment<FragmentIlacListesiBinding>(R.layout.fr
                   override fun onQueryTextSubmit(query: String?): Boolean {
                     searchView.clearFocus()
                       return true
+
              }
 
                    override fun onQueryTextChange(newText: String?): Boolean {
@@ -121,7 +109,7 @@ class IlacListesiFragment : BaseFragment<FragmentIlacListesiBinding>(R.layout.fr
 
                        if (searchText.isNotEmpty()){
                             ilacListesi.forEach{
-                                if (it.ilacAdi.uppercase(Locale.getDefault()).contains(searchText.uppercase(Locale.getDefault()))){
+                                if (it.ilacAdi.uppercase(Locale.getDefault()).contains(searchText.uppercase(Locale.US))){
                                     searchList.add(it)
                                 }
                             }

@@ -3,23 +3,27 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/ilac_graph"
-    app:startDestination="@id/secimFragment">
+    app:startDestination="@id/animasyonFragment">
 
     <fragment
         android:id="@+id/secimFragment"
         android:name="com.eneserkocak.ilac.view.SecimFragment"
-        android:label="SecimFragment" >
+        android:label="İlaç Rehberi" >
         <action
             android:id="@+id/action_secimFragment_to_ilacListesiFragment"
             app:destination="@id/ilacListesiFragment" />
         <action
             android:id="@+id/action_secimFragment_to_tumIlaclarFragment"
             app:destination="@id/tumIlaclarFragment" />
+        <action
+            android:id="@+id/action_secimFragment_to_mapsListeFragment"
+            app:destination="@id/mapsListeFragment"
+            />
     </fragment>
     <fragment
         android:id="@+id/ilacListesiFragment"
         android:name="com.eneserkocak.ilac.view.IlacListesiFragment"
-        android:label="IlacListesiFragment" >
+        android:label="İlaç Kütüphanem" >
         <action
             android:id="@+id/action_ilacListesiFragment_to_secimFragment"
             app:destination="@id/secimFragment" />
@@ -27,7 +31,7 @@
             android:id="@+id/action_ilacListesiFragment_to_ilacDetayiFragment"
             app:destination="@id/ilacDetayiFragment" />
     </fragment>
-    <fragment
+    <dialog
         android:id="@+id/ilacDetayiFragment"
         android:name="com.eneserkocak.ilac.view.IlacDetayiFragment"
         android:label="IlacDetayiFragment" >
@@ -38,11 +42,11 @@
             android:name="ilacId"
             app:argType="integer"
             android:defaultValue="0" />
-    </fragment>
+    </dialog>
     <fragment
         android:id="@+id/tumIlaclarFragment"
         android:name="com.eneserkocak.ilac.view2.TumIlaclarFragment"
-        android:label="fragment_tum_ilaclar"
+        android:label="Ecza Dolabım"
         tools:layout="@layout/fragment_tum_ilaclar" >
         <action
             android:id="@+id/action_tumIlaclarFragment_to_secimFragment"
@@ -56,6 +60,12 @@
         <action
             android:id="@+id/action_tumIlaclarFragment_to_yeniIlacEkleFragment"
             app:destination="@id/yeniIlacEkleFragment" />
+        <action
+            android:id="@+id/action_tumIlaclarFragment_to_alarmFragment"
+            app:destination="@id/alarmFragment" />
+        <action
+            android:id="@+id/action_tumIlaclarFragment_to_ilacSil_BS_Fragment"
+            app:destination="@id/ilacSil_BS_Fragment" />
     </fragment>
     <fragment
         android:id="@+id/miadiYaklasanlarFragment"
@@ -76,7 +86,7 @@
     <fragment
         android:id="@+id/yeniIlacEkleFragment"
         android:name="com.eneserkocak.ilac.view2.yeniIlacEkleFragment"
-        android:label="fragment_yeni_ilac_ekle"
+        android:label="İlaç Ekle"
         tools:layout="@layout/fragment_yeni_ilac_ekle" >
         <action
             android:id="@+id/action_yeniIlacEkleFragment_to_tumIlaclarFragment"
@@ -88,7 +98,7 @@
     <fragment
         android:id="@+id/qrCodeFragment"
         android:name="com.eneserkocak.ilac.view2.qrCodeFragment"
-        android:label="qrCodeFragment" >
+        android:label="Karekod Okutunuz" >
         <action
             android:id="@+id/action_qrCodeFragment_to_yeniIlacEkleFragment"
             app:destination="@id/yeniIlacEkleFragment" />
@@ -96,5 +106,50 @@
     <fragment
         android:id="@+id/ayarlarFragment"
         android:name="com.eneserkocak.ilac.view.AyarlarFragment"
-        android:label="AyarlarFragment" />
+        android:label="Miad Uyarı Süresi Ayarı" />
+
+    <dialog
+        android:id="@+id/alarmFragment"
+        android:name="com.eneserkocak.ilac.viewAlarm.AlarmFragment"
+        android:label="AlarmFragment" />
+    <fragment
+        android:id="@+id/animasyonFragment"
+        android:name="com.eneserkocak.ilac.view.AnimasyonFragment"
+        android:label="AnimasyonFragment" >
+        <action
+
+            android:id="@+id/action_animasyonFragment_to_secimFragment"
+            app:destination="@id/secimFragment"
+            />
+    </fragment>
+    <fragment
+        android:id="@+id/mapsListeFragment"
+        android:name="com.eneserkocak.ilac.view3.MapsListeFragment"
+        android:label="MapsListeFragment" >
+        <action
+            android:id="@+id/action_mapsListeFragment_to_mapsFragment"
+            app:destination="@id/mapsFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/mapsFragment"
+        android:name="com.eneserkocak.ilac.view3.MapsFragment"
+        android:label="MapsFragment" >
+        <action
+            android:id="@+id/action_mapsFragment_to_mapsListeFragment"
+            app:destination="@id/mapsListeFragment" />
+        <argument
+            android:name="gelinenSayfa"
+            app:argType="string" />
+    </fragment>
+    <dialog
+        android:id="@+id/ilacSil_BS_Fragment"
+        android:name="com.eneserkocak.ilac.view2.IlacSil_BS_Fragment"
+        android:label="IlacSil_BS_Fragment" >
+        <action
+            android:id="@+id/action_ilacSil_BS_Fragment_to_tumIlaclarFragment"
+            app:destination="@id/tumIlaclarFragment" />
+        <argument
+            android:name="silinecekIlac"
+            app:argType="com.eneserkocak.ilac.model.Ilac" />
+    </dialog>
 </navigation>

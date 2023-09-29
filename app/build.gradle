@@ -4,8 +4,10 @@ apply plugin: 'com.android.application'
 apply plugin: 'kotlin-android'
 apply plugin: 'androidx.navigation.safeargs.kotlin'
 apply plugin: 'kotlin-kapt'
+apply plugin:  'kotlin-parcelize'
 
 apply plugin: 'com.google.gms.google-services'
+apply plugin: 'com.google.android.libraries.mapsplatform.secrets-gradle-plugin'
 
 android {
     namespace 'com.eneserkocak.ilac'
@@ -15,8 +17,8 @@ android {
         applicationId "com.eneserkocak.ilac"
         minSdk 23
         targetSdk 33
-        versionCode 1
-        versionName "1.0"
+        versionCode 3
+        versionName "2.1"
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
@@ -47,6 +49,7 @@ dependencies {
     implementation 'androidx.appcompat:appcompat:1.6.1'
     implementation 'com.google.android.material:material:1.8.0'
     implementation 'androidx.constraintlayout:constraintlayout:2.1.4'
+    implementation 'com.google.android.gms:play-services-maps:18.1.0'
     testImplementation 'junit:junit:4.13.2'
     androidTestImplementation 'androidx.test.ext:junit:1.1.5'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.5.1'
@@ -92,4 +95,14 @@ dependencies {
     kapt("androidx.room:room-compiler:$room_version")
 
     implementation 'com.google.code.gson:gson:2.8.6'
+
+    implementation 'com.google.android.gms:play-services-ads:22.1.0'
+   // implementation("androidx.room:room-rxjava3:$room_version")
+
+    //BottomSheetFragment İmp:
+
+    implementation 'com.google.android.material:material:1.9.0'
+
+    implementation 'com.github.yucelkozan.utils:alarm:1.1.0'
+
 }

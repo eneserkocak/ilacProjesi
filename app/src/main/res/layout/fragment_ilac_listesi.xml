@@ -7,46 +7,52 @@
     </data>
 
 
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context="com.eneserkocak.ilacprojem.IlacListesiFragment">
 
 
-        <androidx.constraintlayout.widget.ConstraintLayout
+        <SearchView
+            android:id="@+id/search"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            tools:context="com.eneserkocak.ilacprojem.IlacListesiFragment">
+            android:layout_height="wrap_content"
+
+            android:background="@drawable/search_bg"
+
+            android:searchHintIcon="@drawable/search_icon"
+            app:closeIcon="@drawable/ic_baseline_clear_24"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            android:queryHint="ilaç ismi ile arayınız!.."
+            app:searchIcon="@drawable/search_icon"
+            tools:layout_editor_absoluteY="58dp" />
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/ilacListRecycler"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            app:layout_constraintBottom_toTopOf="@+id/adView"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/search" />
+
+        <com.google.android.gms.ads.AdView
+            android:id="@+id/adView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_centerHorizontal="true"
+            app:adSize="LARGE_BANNER"
+            app:adUnitId="ca-app-pub-5511459156486174/2341916943"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/ilacListRecycler"></com.google.android.gms.ads.AdView>
 
 
-
-            <SearchView
-                android:id="@+id/search"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="30dp"
-                android:layout_marginTop="8dp"
-                android:layout_marginEnd="30dp"
-                android:layout_marginBottom="4dp"
-                android:background="@drawable/search_btn"
-
-                app:closeIcon="@drawable/ic_baseline_clear_24"
-
-                app:layout_constraintBottom_toTopOf="@+id/ilacListRecycler"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-                app:queryHint="ilaç ismi ile arayınız!.."
-                app:searchIcon="@drawable/ic_baseline_search_24" />
-
-
-            <androidx.recyclerview.widget.RecyclerView
-                android:id="@+id/ilacListRecycler"
-                android:layout_width="0dp"
-                android:layout_height="0dp"
-                android:layout_marginBottom="2dp"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/search" />
-
-            <!--<TextView
+        <!--<TextView
                 android:id="@+id/ilacHataMesaji"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -57,7 +63,7 @@
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent" />-->
 
-           <!-- <ProgressBar
+        <!-- <ProgressBar
                 android:id="@+id/ilacYukleniyor"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -68,7 +74,8 @@
 
             </ProgressBar>-->
 
-        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
 
 
 </layout>

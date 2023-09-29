@@ -6,106 +6,253 @@
 
 
     <data>
+        <variable
+            name="clickedButton"
+            type="com.eneserkocak.ilac.model.ClickedButton" />
+
+        <import type="com.eneserkocak.ilac.model.ClickedButton"/>
 
     </data>
 
-    <androidx.constraintlayout.widget.ConstraintLayout
+
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:paddingRight="12dp"
+        android:paddingLeft="12dp">
 
-
-        <Button
-            android:id="@+id/tumIlaclarButton"
-            android:layout_width="124dp"
-            android:layout_height="53dp"
-            android:layout_marginStart="5dp"
-            android:layout_marginTop="15dp"
-            android:layout_marginEnd="5dp"
-            android:layout_marginBottom="10dp"
-            android:background="@drawable/btn_gecenler"
-            android:text="Tüm İlaçlar"
-            android:textAllCaps="false"
-            android:textSize="12sp"
-            app:layout_constraintBottom_toTopOf="@+id/yeniIlacEkleButton"
-            app:layout_constraintEnd_toStartOf="@+id/miadiGecenlerButton"
-            app:layout_constraintStart_toEndOf="@+id/miadiYaklasanButton"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.34" />
-
-        <Button
-            android:id="@+id/miadiYaklasanButton"
-
-
-            android:layout_width="102dp"
-            android:layout_height="61dp"
-            android:layout_marginStart="5dp"
-            android:layout_marginTop="15dp"
-            android:layout_marginEnd="5dp"
-            android:layout_marginBottom="20dp"
-            android:background="@drawable/btn_yaklasan"
-            android:text="Miadı Yaklaşanlar"
-            android:textAllCaps="false"
-            android:textSize="12sp"
-            app:layout_constraintBottom_toTopOf="@+id/tumListeRecycler"
-            app:layout_constraintEnd_toStartOf="@+id/tumIlaclarButton"
-            app:layout_constraintHorizontal_bias="0.545"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.342" />
-
-        <Button
-            android:id="@+id/miadiGecenlerButton"
-            android:layout_width="103dp"
-            android:layout_height="59dp"
-            android:layout_marginStart="5dp"
-            android:layout_marginTop="15dp"
-            android:layout_marginEnd="5dp"
-            android:layout_marginBottom="20dp"
-            android:background="@drawable/btn_tum"
-            android:text="Miadı Geçenler"
-            android:textAllCaps="false"
-            android:textSize="12sp"
-
-            app:layout_constraintBottom_toTopOf="@+id/tumListeRecycler"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.938"
-            app:layout_constraintStart_toEndOf="@+id/miadiYaklasanButton"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.327" />
-
-        <Button
-            android:id="@+id/yeniIlacEkleButton"
+        <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="55dp"
-            android:layout_marginTop="8dp"
-            android:layout_marginEnd="55dp"
-            android:background="@drawable/btn_ekle"
-            android:text="Yeni ilac ekle"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.0"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/miadiYaklasanButton" />
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:id="@+id/tumIlaclarButton"
+                    android:layout_width="match_parent"
+                    android:layout_height="100dp"
+                    android:layout_margin="1dp"
+                    android:layout_weight="1"
+                    android:background="@{clickedButton != ClickedButton.TumIlaclar ?  @drawable/home_ktphn_rectangle :  @drawable/bg_selected_btn }"
+                    android:padding="8dp">
 
 
+                    <ImageView
 
+                        android:id="@+id/imageView10"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:srcCompat="@drawable/tum_ilaclar_img" />
+
+                    <TextView
+
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="4dp"
+                        android:gravity="center_vertical"
+                        android:lines="2"
+                        android:text="@string/t_m_la_lar"
+                        android:textStyle="bold"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent" />
+
+                    <TextView
+
+                        android:id="@+id/tumIlaclarCount"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintTop_toTopOf="@+id/imageView10"
+                        tools:text="5" />
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:id="@+id/miadiYaklasanButton"
+                    android:layout_width="match_parent"
+                    android:layout_height="100dp"
+                    android:layout_margin="1dp"
+                    android:layout_weight="1"
+                    android:background="@{clickedButton != ClickedButton.MiadıYaklasanlar ?  @drawable/home_ktphn_rectangle :  @drawable/bg_selected_btn }"
+
+                    android:padding="8dp">
+
+
+                    <ImageView
+
+                        android:id="@+id/imageView11"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:srcCompat="@drawable/miadi_yaklasanlar_img" />
+
+                    <TextView
+
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="4dp"
+
+                        android:text="@string/miad_nyakla_anlar"
+                        android:textStyle="bold"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent" />
+
+                    <TextView
+
+                        android:id="@+id/mYaklasanlarCount"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        app:layout_constraintBottom_toBottomOf="@+id/imageView11"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintTop_toTopOf="@+id/imageView11"
+                        tools:text="5" />
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:id="@+id/miadiGecenlerButton"
+                    android:layout_width="match_parent"
+                    android:layout_height="100dp"
+                    android:layout_margin="1dp"
+                    android:layout_weight="1"
+                    android:background="@{clickedButton != ClickedButton.MiadiGecenler ?  @drawable/home_ktphn_rectangle :  @drawable/bg_selected_btn }"
+
+                    android:padding="8dp">
+
+
+                    <ImageView
+
+                        android:id="@+id/imageView12"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:srcCompat="@drawable/miadi_gecenler_img" />
+
+                    <TextView
+
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="4dp"
+                        android:text="@string/miad_nge_enler"
+                        android:textStyle="bold"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent" />
+
+                    <TextView
+
+                        android:id="@+id/mGecenlerCount"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        app:layout_constraintBottom_toBottomOf="@+id/imageView12"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintTop_toTopOf="@+id/imageView12"
+                        tools:text="5" />
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+            </LinearLayout>
+
+            <Button
+                android:id="@+id/yeniIlacEkleButton"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="2dp"
+                android:layout_marginTop="0dp"
+                android:layout_marginRight="2dp"
+                android:text="@string/yeni_la_ekle"
+                android:textAllCaps="false"
+                android:textColor="@color/white"
+                android:textStyle="bold" />
+
+            <SearchView
+                android:id="@+id/yeniIlacSearch"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:queryHint="ilaç ismi ile arayınız!.."
+                android:layout_marginTop="0dp"
+
+                android:background="@drawable/search_bg"
+
+                android:searchHintIcon="@drawable/search_icon"
+                app:closeIcon="@drawable/ic_baseline_clear_24"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:queryHint="ilaç ismi ile arayınız!.."
+                app:searchIcon="@drawable/search_icon"
+                tools:layout_editor_absoluteY="58dp">
+
+            </SearchView>
+
+            <LinearLayout
+                android:id="@+id/placeHolderLayout"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical"
+                android:visibility="visible"
+                tools:visibility="gone">
+
+                <ImageView
+                    android:id="@+id/imageView9"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="36dp"
+                    android:layout_marginTop="2dp"
+                    android:layout_marginRight="16dp"
+                    android:layout_weight="1"
+                    android:adjustViewBounds="true"
+
+                    app:srcCompat="@drawable/tum_ilaclar_place_holder" />
+
+                <TextView
+                    android:id="@+id/textView11"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:text="Kayıtlı herhangi bir ilacınız bulunmamaktadır." />
+            </LinearLayout>
 
             <androidx.recyclerview.widget.RecyclerView
-
                 android:id="@+id/tumListeRecycler"
-                android:layout_width="345dp"
-                android:layout_height="376dp"
-                android:background="#ECEBE7"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent">
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_marginTop="2dp"
+                android:layout_marginBottom="0dp"
+                android:layout_weight="1"
+                android:visibility="visible" />
 
-            </androidx.recyclerview.widget.RecyclerView>
+        </LinearLayout>
+
+        <com.google.android.gms.ads.AdView
+            android:id="@+id/adView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_centerHorizontal="true"
+            app:adSize="FULL_BANNER"
+
+
+            app:adUnitId="ca-app-pub-5511459156486174/9290468679"
+
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"></com.google.android.gms.ads.AdView>
+
+
+    </LinearLayout>
 
 
 
-
-    </androidx.constraintlayout.widget.ConstraintLayout>
 
 
 </layout>

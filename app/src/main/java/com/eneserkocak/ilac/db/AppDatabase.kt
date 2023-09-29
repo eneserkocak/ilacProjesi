@@ -4,11 +4,11 @@ import android.content.Context
 import androidx.room.Database
 import androidx.room.Room
 import androidx.room.RoomDatabase
-import androidx.room.TypeConverter
 import androidx.room.TypeConverters
+import com.eneserkocak.ilac.model.AlarmSaat
 import com.eneserkocak.ilac.model.Ilac
 
-@Database(entities = [Ilac::class], version = 1)
+@Database(entities = [Ilac::class,AlarmSaat::class], version = 4)
 @TypeConverters(TypeConventer::class)
 abstract class AppDatabase : RoomDatabase() {
     abstract fun ilacDao(): IlacDao
@@ -20,7 +20,7 @@ abstract class AppDatabase : RoomDatabase() {
             if (INSTANCE == null) {
                 synchronized(AppDatabase::class) {
                     INSTANCE = Room.databaseBuilder(context.applicationContext,
-                        AppDatabase::class.java, "user.db").allowMainThreadQueries()
+                        AppDatabase::class.java, "user.db").allowMainThreadQueries().fallbackToDestructiveMigration()
                         .build()
                 }
             }

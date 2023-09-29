@@ -1,31 +1,24 @@
 package com.eneserkocak.ilac.viewmodel
 
-import android.annotation.SuppressLint
 import android.content.Context
-import android.view.animation.Transformation
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import androidx.lifecycle.viewModelScope
-import com.eneserkocak.ilac.model.ILACLAR
 import com.eneserkocak.ilac.model.Ilac
-import com.google.firebase.firestore.FirebaseFirestore
+import com.eneserkocak.ilac.model.Place
 import com.google.gson.Gson
 import com.google.gson.reflect.TypeToken
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.launch
-import kotlinx.coroutines.tasks.await
-import kotlinx.coroutines.withContext
-import java.nio.channels.AsynchronousFileChannel.open
-import java.util.*
 
 class IlacViewModel:ViewModel() {
 
     val ilaclar = MutableLiveData<List<Ilac>>()
-    val ilacHataMesaji = MutableLiveData<Boolean>()
-    val ilacYukleniyor = MutableLiveData<Boolean>()
 
     val secilenIlac =MutableLiveData<Ilac>()
 
+    val qrsecilenIlac = MutableLiveData<Ilac>()
+
+    val place= MutableLiveData<Place>()
+
+    val selectedPlace = MutableLiveData<Place>()
 
     val qrValue = MutableLiveData<String>()
 
@@ -37,6 +30,9 @@ class IlacViewModel:ViewModel() {
     val barcode = MutableLiveData<String>()
 
 
+
+
+    //JSON verileri APP e yükle (fun setData)
     fun setData(context : Context) {
 
         val jsonFileString: String = context.assets.open("ilac.json").bufferedReader().use {
@@ -49,6 +45,10 @@ class IlacViewModel:ViewModel() {
         var ilacListesi: List<Ilac> = gson.fromJson(jsonFileString, listPersonType)
 
        ilaclar.value = ilacListesi
+
+
+
+
 
         //Aşağıdaki kodlar ile verileri firebase e yüklüyoruz..Ancak 7500 veri kota aşımı ve kasma dan dolayı verileri firebase
         //e yüklemeyip..YUKARIDA App içine Assets içine kaydediyorum.
@@ -108,6 +108,10 @@ class IlacViewModel:ViewModel() {
             }
          }
     }*/
+
+
+
+
 
 
 }

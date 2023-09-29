@@ -1,15 +1,15 @@
 package com.eneserkocak.ilac.model
 
+import android.os.Parcelable
 import androidx.room.Entity
 import androidx.room.PrimaryKey
-import com.google.firebase.Timestamp
-import com.google.gson.annotations.SerializedName
+import kotlinx.parcelize.Parcelize
 import java.util.*
 
-
+@Parcelize
 @Entity(tableName = "ilaclar")
 data class Ilac (
-    var ilacId: String="",
+    var id: String="",
     var ilacAdi: String="",
     var ilacBarkod: String="",
     var ilacEtkenMadde: String="",
@@ -20,5 +20,5 @@ data class Ilac (
     var skt : Date? = null,
     @PrimaryKey(autoGenerate = true)
     val roomId : Int = 0
-    ) {
+    ) : Parcelable {
 }

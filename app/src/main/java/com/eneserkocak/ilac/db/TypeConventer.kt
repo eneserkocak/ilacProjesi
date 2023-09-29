@@ -1,6 +1,9 @@
 package com.eneserkocak.ilac.db
 
 import androidx.room.TypeConverter
+import com.eneserkocak.ilac.model.Saat
+import com.google.gson.Gson
+import com.google.gson.reflect.TypeToken
 import java.util.*
 
 class TypeConventer {
@@ -15,4 +18,24 @@ class TypeConventer {
         fun fromDateToLong(date: Date?): Long? {
             return if (date == null) null else date.getTime()
         }
+
+
+
+    @TypeConverter
+    fun fromResultList(value: MutableList<Saat>): String {
+        val gson = Gson()
+        val type = object : TypeToken<MutableList<Saat>>() {}.type
+        return gson.toJson(value, type)
     }
+
+    @TypeConverter
+    fun toResultList(value: String): MutableList<Saat> {
+        val gson = Gson()
+        val type = object : TypeToken<MutableList<Saat>>() {}.type
+        return gson.fromJson(value, type)
+    }
+
+
+
+
+}

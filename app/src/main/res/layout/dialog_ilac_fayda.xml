@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<layout xmlns:android="http://schemas.android.com/apk/res/android">
+<layout xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:android="http://schemas.android.com/apk/res/android">
 
     <data>
 
@@ -9,6 +10,14 @@
 
     </data>
 
+    <com.google.android.material.card.MaterialCardView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:cardCornerRadius="2dp"
+        app:strokeColor="#EBEBEB"
+        app:strokeWidth="3dp"
+        >
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
@@ -17,11 +26,32 @@
         android:background="@drawable/dialogarkaplan">
 
 
+        <ImageView
+            android:id="@+id/ilacFaydaGorsel"
+            android:layout_width="wrap_content"
+            android:layout_height="100dp"
+            android:layout_gravity="center"
+            android:adjustViewBounds="true"
+            />
+
         <TextView
-            android:id="@+id/textView2"
+            android:id="@+id/ilacAdiText"
+            android:layout_marginTop="8dp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Bu ilaç aşağıdaki semptomların tedavisinde kullanılır:"
+            android:textSize="14sp"
+            android:textAlignment="center"
+            android:textAllCaps="false"
+            android:textStyle="bold"
+            android:text="@{ilac.ilacAdi}" />
+
+        <TextView
+            android:id="@+id/textView2"
+            android:layout_marginTop="3dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textAlignment="center"
+            android:text="@string/bu_ila_a_a_daki_semptomlar_n_tedavisinde_kullan_l_r"
             android:textStyle="bold"
             android:textSize="18sp"/>
 
@@ -36,6 +66,7 @@
 
                 <TextView
                     android:id="@+id/textView"
+                    android:justificationMode="inter_word"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="@{ilac.ilacEndikasyon}"
@@ -47,5 +78,5 @@
 
     </LinearLayout>
 
-
+    </com.google.android.material.card.MaterialCardView>
 </layout>
